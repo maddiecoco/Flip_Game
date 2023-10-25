@@ -9,6 +9,8 @@
 #include <ctime>
 #include <cstdlib>
 
+using namespace std;
+
 // Part A: Card class
 class Card {
     // Member variables for storing the value and suit of a card
