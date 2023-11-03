@@ -1,73 +1,50 @@
-#ifndef CARD_H
-#define CARD_H
+// Created by nehae on 10/18/2023.
+// The Card class represents a card with a value and a suit.
+
+#ifndef FLIP_CARD_H
+#define FLIP_CARD_H
 
 #include <iostream>
-#include <vector>
+#include <string>
 #include <ctime>
 #include <cstdlib>
 
 using namespace std;
 
-// Card class: stores a single card object, with a value and a suit
-class Card
-{
-    public:
-    Card();
-    Card(int value, string suit);
-    ~Card(){};
+// Part A: Card class
+class Card {
+    // Member variables for storing the value and suit of a card
+    std::string value;
+    std::string suit;
 
-    //Member functions for card class, friend function for << operator
-    void setValue(int value);
-    void setSuit(string suit);
-    int getValue();
-    string getSuit();
-    friend ostream& operator<<(ostream& ostr, const Card& c);
+public:
+    // Constructor with default values for the card
+    Card(std::string v = "", std::string s = "") : value(v), suit(s) {}
 
-    private:
-    int _value;
-    string _suit;
+    void setValue(std::string v) { value = v; }     // Setter for value
+    void setSuit(std::string s) { suit = s; }       // Setter for suit
+
+    std::string getValue() const { return value; }    // Getter for value
+    std::string getSuit() const { return suit; }      // Getter for suit
+
+    // Overloaded << operator to print a card's value and suit
+    friend std::ostream& operator<<(std::ostream& os, const Card& card);
 };
 
-//Default constructor: Sets card object as ace of diamonds
-Card::Card()
-{
-    _value = 1;
-    _suit = "Diamonds";
+// Implementation of the overloaded << operator for the Card class
+std::ostream& operator<<(std::ostream& os, const Card& card) {
+    os << card.value << " of " << card.suit;
+    return os;
 }
 
-Card::Card(int value, string suit)
-{
-    _value = value;
-    _suit = suit;
-}
-
-void Card::setValue(int value)
-{
-    _value = value;
-}
-
-void Card::setSuit(string suit)
-{
-    _suit = suit;
-}
-
-int Card::getValue()
-{
-    return _value;
-}
-
-string Card::getSuit()
-{
-    return _suit;
-}
-
-// Overloaded operator << that prints a card's
-// value and suit 
-ostream& operator<<(ostream& ostr, const Card& c)
-{
-    ostr << "This card is a " << c._value << " of " << c._suit;
-    return ostr;
-}
+// Node for the linked list implementation of the Deck
+struct Node {
+    Card card;
+    Node* next;
+};
 
 
-#endif
+
+
+
+#endif //FLIP_CARD_H

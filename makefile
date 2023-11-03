@@ -6,7 +6,7 @@ CXXFLAGS = -std=c++11
 
 # Define the source and header files
 SRCS = main.cpp
-HEADERS = card.h deck.h
+HEADERS = Card.h Deck.h
 
 # Define the target executable
 TARGET = main
