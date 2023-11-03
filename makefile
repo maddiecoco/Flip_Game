@@ -5,7 +5,7 @@ CXX = g++
 CXXFLAGS = -std=c++11
 
 # Define the source and header files
-SRCS = main.cpp
+SRCS = main.cpp Card.cpp Deck.cpp
 HEADERS = Card.h Deck.h
 
 # Define the target executable
@@ -15,7 +15,7 @@ TARGET = main
 all: run
 
 # Compile the source files into the executable
-$(TARGET): $(SRCS) $(HEADERS)
+$(TARGET): $(SRCS)
 	$(CXX) $(CXXFLAGS) $^ -o $@
 
 # Run the compiled program
